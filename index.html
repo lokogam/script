@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>SCRIP</title>
+</head>
+
+<body>
+    <label for="">Numero</label><br>
+    <input class="form-control" type="number" name="" id="selector">
+    <button onclick="calcular()">CALCULAR</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function calcular() {
+        var data = $("#selector").val();
+        console.log(data);
+
+        $.ajax({
+                method: "POST",
+                url: "scriptt.php",
+                data: {
+                    data: data
+                }
+            })
+            .done(function(response) {
+                $("#resultado").html(response);
+            });
+
+    }
+</script>
+
+</html>
